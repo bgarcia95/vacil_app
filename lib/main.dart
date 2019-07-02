@@ -16,6 +16,8 @@ class VacilApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        //This is in order to avoid overflow on TextField
+        resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.black,
         body: VacilLogin(),
       ),
@@ -44,7 +46,7 @@ class _VacilLoginState extends State<VacilLogin> {
         child: Column(
           children: <Widget>[
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -62,6 +64,9 @@ class _VacilLoginState extends State<VacilLogin> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(
+                    height: 25.0,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
@@ -69,15 +74,27 @@ class _VacilLoginState extends State<VacilLogin> {
                     ),
                     width: 300,
                     height: 50,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(Icons.person),
+                    child: Theme(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          prefixIcon: Icon(
+                            Icons.person,
+                          ),
+                          hintText: 'Username',
+                          hintStyle: TextStyle(
+                            height: 2.8,
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      data: Theme.of(context).copyWith(
+                        primaryColor: Colors.black,
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 5.0,
+                    height: 8.0,
                   ),
                   Container(
                     width: 300,
@@ -86,19 +103,49 @@ class _VacilLoginState extends State<VacilLogin> {
                       borderRadius: BorderRadius.circular(5.0),
                       color: Colors.white,
                     ),
-                    child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(Icons.vpn_key),
+                    child: Theme(
+                      child: TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          prefixIcon: Icon(
+                            Icons.vpn_key,
+                          ),
+                          hintText: 'Password',
+                          hintStyle: TextStyle(
+                            height: 3.3,
+                          ),
+                          contentPadding: EdgeInsets.symmetric(vertical: 20.0),
+                        ),
                       ),
+                      data: Theme.of(context)
+                          .copyWith(primaryColor: Colors.black),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15.0,
+                  ),
+                  Container(
+                    child: FlatButton(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 125, vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      color: Color(0xFFFFCD00),
+                      child: Text(
+                        'Log In',
+                        style: TextStyle(
+                          fontFamily: 'Source Sans Pro',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                      onPressed: () {},
                     ),
                   ),
                 ],
               ),
-            ),
-            Expanded(
-              child: Row(),
             ),
           ],
         ),
