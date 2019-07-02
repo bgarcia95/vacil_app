@@ -43,11 +43,19 @@ class _VacilLoginState extends State<VacilLogin> {
       child: SafeArea(
         child: Column(
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 92),
-              width: 268,
-              child: Image(
-                image: AssetImage('images/logo.png'),
+            Expanded(
+              flex: 2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 275.0,
+                    margin: EdgeInsets.only(top: 15.0),
+                    child: Image(
+                      image: AssetImage('images/logo.png'),
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(
@@ -59,45 +67,38 @@ class _VacilLoginState extends State<VacilLogin> {
                       borderRadius: BorderRadius.circular(5.0),
                       color: Colors.white,
                     ),
-                    width: 350.0,
+                    width: 300,
+                    height: 50,
                     child: TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-//                        labelText: 'Username',
-                        prefixIcon: Icon(
-                          Icons.person,
-                        ),
-                        hintText: 'Username',
+                        prefixIcon: Icon(Icons.person),
                       ),
-                      style: TextStyle(
-                          color: Colors.black, fontFamily: 'Source Sans Pro'),
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                   ),
                   Container(
+                    width: 300,
+                    height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
                       color: Colors.white,
                     ),
-                    width: 350.0,
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-//                        labelText: 'Password',
-                        prefixIcon: Icon(
-                          Icons.vpn_key,
-                        ),
-                        hintText: 'Password',
+                        prefixIcon: Icon(Icons.vpn_key),
                       ),
-                      style: TextStyle(
-                          color: Colors.black, fontFamily: 'Source Sans Pro'),
                     ),
                   ),
                 ],
               ),
+            ),
+            Expanded(
+              child: Row(),
             ),
           ],
         ),
